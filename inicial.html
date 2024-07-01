@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+
+<!--ESTRUTURAÇÃO DA PAGINA -->  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicial | Centraliza T.I.</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="Javascript.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- NAV BAR- barra de acessos COLOCAR EM TODAS AS PAGINAS-->  
+<nav id="CorMenu" class="sidebar navbar fixed-top d-flex justify-content-between" style="background-color: #aaaaaa">
+    <div class="d-flex ml-4">
+        <a class="nav-link text-white mx-2" href="login.html">Login</a> 
+        <a class="nav-link text-white mx-2" href="cadastro.html">Cadastre-se </a> 
+        <a class="nav-link text-white mx-2" href="faleco.html">Fale Conosco</a> 
+      </div>
+  <span></span>
+  
+  <a href="index.html">
+    <img src="IMG/logo.jpg" alt="Logo" width="200">
+  </a>  
+  <div><span></span></div>
+  <div><span></span></div>
+
+  <button class="navbar-toggler btn-light toggle-button" type="button" data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>    
+</button>
+</nav> 
+<!-- FIM NAV BAR- barra de acessos COLOCAR EM TODAS AS PAGINAS--> 
+<!-- BARRA DE PESQUISA--> 
+
+<main id="CorEdicaoCadastro mx-auto" style="background-color: #e0e0e0;">
+    <div class="mt-4">
+      <img src="IMG/pg1.PNG" alt="Capa" style="max-width: 55%; background-color: white;">
+    </div> 
+    <div class="container mt-1">
+      <div class="input-group">
+        <input type="text" id="search-input" class="form-control" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="search-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 0 11 0 5.5 0 0 1 11 0z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="search-results" style="display: none;">
+        <h2>Resultados da Pesquisa</h2>
+        <div id="results-list"></div>
+      </div>
+    </div>
+  
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const cursos = [
+            {
+              "nome": "Escola Conquer | Materiais Gratuitos",
+              "link": "https://escolaconquer.com.br/materiais-gratuitos/"
+            },
+            {
+              "nome": "Voitto | Cursos Gratuitos",
+              "link": "https://voitto.com.br/busca?filter=gratuitos/"
+            },
+            {
+              "nome": "Coursera | Cursos Gratuitos",
+              "link": "https://www.coursera.org/search?query=gratuitos&utm_medium=sem&utm_source=gg&utm_campaign=B2C_LATAM__coursera_FTCOF_career-academy_countrygroup-1&campaignid=20849786070&adgroupid=162845943755&device=c&keyword=cursos%20do%20coursera&matchtype=b&network=g&devicemodel=&adposition=&creativeid=699706314367&hide_mobile_promo=&gad_source=1&gclid=CjwKCAjw-O6zBhASEiwAOHeGxUmwxj0iq4TTItrKbIyEFgTBnQ8ntSYD5TJZB4yDZF4IaquZhYKcfRoCOSYQAvD_BwE"
+            },
+            {
+              "nome": "Santander | Open Academy",
+              "link": "https://www.santanderopenacademy.com/pt_br/index.html"
+            }
+          ];
+      
+          const searchInput = document.getElementById('search-input');
+          const searchButton = document.getElementById('search-button');
+          const searchResults = document.getElementById('search-results');
+          const resultsList = document.getElementById('results-list');
+      
+          searchButton.addEventListener('click', function () {
+            performSearch();
+          });
+      
+          searchInput.addEventListener('input', function () {
+            performSearch();
+          });
+      
+          function performSearch() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+      
+            if (searchTerm.length === 0) {
+              searchResults.style.display = 'none';
+              return;
+            }
+      
+            const filteredCursos = cursos.filter(curso =>
+              curso.nome.toLowerCase().includes(searchTerm)
+            );
+      
+            resultsList.innerHTML = '';
+      
+            if (filteredCursos.length > 0) {
+              searchResults.style.display = 'block';
+              filteredCursos.forEach(curso => {
+                const card = document.createElement('div');
+                card.className = 'card curso-card';
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+                const cardTitle = document.createElement('h5');
+                cardTitle.className = 'card-title';
+                cardTitle.textContent = curso.nome;
+                const cardText = document.createElement('p');
+                cardText.className = 'card-text';
+      
+                // Adiciona o botão de acesso ao curso com um link
+                const accessButton = document.createElement('a');
+                accessButton.href = curso.link;
+                accessButton.className = 'btn btn-primary';
+                accessButton.textContent = 'Acessar Link';
+      
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardText);
+                cardBody.appendChild(accessButton);
+                card.appendChild(cardBody);
+                resultsList.appendChild(card);
+              });
+            } else {
+              searchResults.style.display = 'none';
+            }
+          }
+        });
+      </script>
+ <!-- FIM BARRA DE PESQUISA-->
+
+<!-- NOTICIAS RELEVANTES E DIRECIONAENTOS -->
+<div class="container mt-3 text-center">
+    <h1 style="color: black; margin-top: 70px;">Notícias Relevantes</h1>
+  </div>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="IMG/febrabantech.png" width="414" height="233" class="card-img-top" alt="Imagem 1">
+          <div class="card-body text-center">
+            <h5 class="card-title">FebrabanTECH 2024,veja os detalhes do evento do ano!</h5>
+            <a href="https://febrabantech.com/home?utm_agency=digietal&utm_medium=social&utm_source=googleads&utm_channel=feed&utm_campaign=fbb%20tech%202024&utm_phase=consideration&utm_objective=traffic&utm_targeting=br%20as%2021mais%20palavrachave&utm_content=search&utm_format=pesquisa&utm_institucional=&gad_source=1&gclid=CjwKCAjw-O6zBhASEiwAOHeGxThL-GAoqvZ62H-GKOjH9a8HNkQzFvEGF4EZEsXMBvNTHXqkh3fUzBoCrqYQAvD_BwE" class="btn btn-primary btn-block my-2">Ver Mais</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="IMG/PUC.PNG" width="414" height="233" class="card-img-top" alt="Imagem 2">
+          <div class="card-body text-center">
+            <h5 class="card-title">Puc Minas inicia as inscrições para o 2°semestre de 2024!!</h5>
+            <a href="https://www.pucminas.br/mundopucminas/Paginas/bolsa-de-estudo.aspx" class="btn btn-primary btn-block my-2">Ver Mais</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="IMG/estagio.PNG" width="414" height="233" class="card-img-top" alt="Imagem 3">
+          <div class="card-body text-center">
+            <h5 class="card-title">Banco Mercantil tem vagas para estagio, confira:</h5>
+            <a href="https://estagio.bancomercantil.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=programa_de_estagio%7Ctraffic%7Cpmax%7Caon&utm_term=ia%7C&utm_content=responsive%7Ckv_acelera%7C&gad_source=1&gclid=CjwKCAjw-O6zBhASEiwAOHeGxVQIsWTGHoSAdHnnG9KvJVORF4al1jlh5ar2mC9lSlHKToEzclAKpxoCo4UQAvD_BwE" class="btn btn-primary btn-block my-2">Ver mais</a>
+        </div>
+         </div>
+          </div>
+          <div>
+        <h1 margin-top: 80px></h1>
+        </div>
+            <div class="col-md-4">
+                <div class="card">
+                  <img src="IMG/estagioey.png" width="414" height="233" class="card-img-top" alt="Imagem 3">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">#BEYELLOW - Programa de Trainees da EY: </h5>
+                    <a href="https://www.ey.com/pt_br/beyellow?gad_source=1&gclid=CjwKCAjw-O6zBhASEiwAOHeGxfin2CDIGrmxxAGJR5EmTb67OYDoMiTX1wmtwlcHN3UATNq-6YOWoRoCDC4QAvD_BwE" class="btn btn-primary btn-block my-2">Ver mais</a>
+                </div>
+            </div>
+             </div>
+               <div class="col-md-4">
+                   <div class="card">
+                     <img src="IMG/semadadados.PNG" width="414" height="233" class="card-img-top" alt="Imagem 3">
+                     <div class="card-body text-center">
+                       <h5 class="card-title">IMERSÃO, retire seu ingresso para esse evento gratuito:</h5>
+                       <a href="https://www.sympla.com.br/evento-online/semana-de-dados-2024/2311570" class="btn btn-primary btn-block my-2">Ver mais</a>   
+                    </div>
+                </div>
+                 </div>
+                   <div class="col-md-4">
+                       <div class="card">
+                         <img src="IMG/ws.PNG" width="414" height="233" class="card-img-top" alt="Imagem 3">
+                         <div class="card-body text-center">
+                           <h5 class="card-title">Workshop de Extensão em Business Intelligence, acesse o link:</h5>
+                           <a href="https://icei.pucminas.br/index.php/noticias/icei/1542-v-workshop-de-extensao-em-business-intelligence" class="btn btn-primary btn-block my-2">Ver mais</a>
+                
+                        </div>
+                 </div>
+             </div>
+         </div>
+    </div>
+  <!-- FIM NOTICIAS RELEVANTES-->
+
+  <h1 style="color: #e0e0e0; margin-top: 150px;"></h1>
+  
+<!-- Copyright -->
+ <div class="text-center p-4" style="background-color: #aaaaaa">
+  </body>
+</html>

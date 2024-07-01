@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e0e0e0;
+  overflow: hidden;
+}
+
+
+header img {
+  display: block;
+  margin: 0 auto;
+}
+
+#page {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  width: 30rem;
+}
+h2 {
+  text-align: center;
+}
+
+input {
+  background-color: rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+input::placeholder {
+  text-align: center;
+  font-size: 1rem;
+  color: gray;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+#adjusts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  color: rgb(0, 60, 255);
+}
+
+#adjusts section {
+  vertical-align: middle;
+}
+
+#text, #email, #password, #phone, #password_confirm {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+}
+
+#data {
+  width: 100%;
+  border: 1px solid gray;
+}
+
+#submit {
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+#submit:hover {
+  background-color: #0056b3;
+}

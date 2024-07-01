@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!--ESTRUTURAÇÃO DA PAGINA -->  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login | Centraliza T.I.</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="Javascript.js"></script>
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+  </head>
+  <body>
+  
+  <!-- NAV BAR- barra de acessos COLOCAR EM TODAS AS PAGINAS-->  
+  <nav id="CorMenu" class="sidebar navbar fixed-top d-flex justify-content-between" style="background-color: #aaaaaa">
+      <div class="d-flex ml-4">
+          <a class="nav-link text-white mx-2" href="inicial.html">Início</a> 
+          <a class="nav-link text-white mx-2" href="cadastro.html">Cadastre-se </a> 
+          <a class="nav-link text-white mx-2" href="faleco.html">Fale Conosco</a> 
+        </div>
+    <span></span>
+    
+    <a href="index.html">
+      <img src="IMG/logo.jpg" alt="Logo" width="200">
+    </a>  
+    <div><span></span></div>
+    <div><span></span></div>
+  
+    <button class="navbar-toggler btn-light toggle-button" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>    
+  </button>
+  </nav> 
+  <!-- FIM NAV BAR- barra de acessos COLOCAR EM TODAS AS PAGINAS--> 
+
+<head>
+  <h1 style="color: #e0e0e0; margin-top: 75px;"></h1>
+  <meta charset="UTF-5">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts/index.js" defer></script>
+</head>
+<body>
+    <div class="page">
+        <form class="formLogin">
+            <h1>Login</h1>
+            <p>Digite os seus dados de acesso no campo abaixo.</p>
+            <label for="email">E-mail</label>
+            <input type="email" placeholder="Digite seu e-mail" autofocus="true" id="email"/>
+            <label for="password">Senha</label>
+            <input type="password" placeholder="Digite sua senha" id="password"/>
+            <a href="/">Esqueci minha senha</a>
+            <a href="cadastro.html">Não possuo conta</a>
+
+            <button type="button" onclick="login()" class="btn">Acesso</button>
+            <button type="button" onclick="logarADM()" class="btn">Acess ADM</button>
+      
+        </form>
+    </div>
+ <script>
+
+  function logarADM(){window.location.href='index.html';}
+ </script>
+  
+</body>
+</html>
